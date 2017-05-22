@@ -32,4 +32,14 @@ def _get_executor(self):
     return SparkContext._thread_pool_executor
 
 
+def stop(self):
+    with SparkContext._lock:
+        if getattr(SparkContext, "_thread_pool_executor", None):
+            SparkContext._thread_pool_executor.shutdown()
+            SparkContext._thread_pool_executor = None
+    SparkContext._stop(self)
+
+
+SparkContext._stop = SparkContext.stop
+SparkContext.stop = stop
 SparkContext._get_executor = _get_executor
