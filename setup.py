@@ -1,4 +1,7 @@
+import sys
 from setuptools import setup, find_packages
+
+install_requires = [] if sys.version_info >= (3, 2) else ["futures"]
 
 setup(
     name='asyncactions',
@@ -8,5 +11,6 @@ setup(
     license='Apache 2.0',
     author='zero323',
     author_email='',
-    description=''
+    description='',
+    install_requires=install_requires
 )
