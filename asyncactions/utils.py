@@ -1,4 +1,6 @@
 import textwrap
+from functools import update_wrapper
+
 from pyspark.context import SparkContext
 from pyspark.rdd import RDD
 from pyspark.sql.dataframe import DataFrame
@@ -22,7 +24,8 @@ def async_action(f):
 
 
 def patch_async(cls, method, doc, suffix):
-    f = async_action(getattr(cls, method))
+    g = getattr(cls, method)
+    f = update_wrapper(async_action(g), g, assigned=["__module__", "__annotations__"])
     f.__doc__ = textwrap.dedent(doc)
     setattr(cls, "{}{}".format(method, suffix), f)
 
