@@ -1,7 +1,12 @@
 import unittest
+import tempfile
+import shutil
+import os
+
 from pyspark.tests import ReusedPySparkTestCase
 from pyspark.sql import SparkSession
 from pyspark.sql.types import Row
+
 import asyncactions
 
 
@@ -40,6 +45,35 @@ class AsyncDataFrameActionsTestCase(ReusedPySparkTestCase):
         self.assertTrue(
             f.result() is None and acc2.value == len(data)
         )
+
+
+class AsyncDataFrameWriterActionsTestCase(ReusedPySparkTestCase):
+    @classmethod
+    def setUpClass(cls):
+        ReusedPySparkTestCase.setUpClass()
+        cls.spark = SparkSession(cls.sc)
+        cls.tempdir = tempfile.mkdtemp()
+
+    @classmethod
+    def tearDownClass(cls):
+        ReusedPySparkTestCase.tearDownClass()
+        cls.spark.stop()
+        shutil.rmtree(cls.tempdir)
+
+    def test_save_async(self):
+        data = [Row(id=i) for i in range(10)]
+        df = self.spark.createDataFrame(data)
+
+        path = os.path.join(self.tempdir, "saved_async")
+        f = (df
+             .write
+             .format("json")
+             .saveAsync(path))
+
+        self.assertIsNone(f.result())
+        loaded = self.spark.read.format("json").load(path)
+        self.assertEqual(loaded.count(), 10)
+        self.assertEqual(sorted(loaded.collect()), data)
 
 
 if __name__ == '__main__':
