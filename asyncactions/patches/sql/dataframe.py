@@ -1,6 +1,7 @@
 from pyspark.sql.dataframe import DataFrame
 from asyncactions.utils import patch_all
 
+
 actions = {
     "collect": ("""
         .. note:: Experimental
@@ -66,5 +67,6 @@ actions = {
         .. versionadded:: 2.3.0
         """)
 }
+
 
 patch_all(DataFrame, actions)
