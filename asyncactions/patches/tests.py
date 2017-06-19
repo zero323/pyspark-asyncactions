@@ -1,9 +1,23 @@
+import os
+import shutil
+import tempfile
 import unittest
+
 from pyspark.tests import ReusedPySparkTestCase
 import asyncactions
 
 
 class AsyncRDDActionsTestCase(ReusedPySparkTestCase):
+    @classmethod
+    def setUpClass(cls):
+        ReusedPySparkTestCase.setUpClass()
+        cls.tempdir = tempfile.mkdtemp()
+
+    @classmethod
+    def tearDownClass(cls):
+        ReusedPySparkTestCase.tearDownClass()
+        shutil.rmtree(cls.tempdir)
+
     def test_async_actions(self):
         data = [x for x in range(10)]
         rdd = self.sc.parallelize(data)
@@ -27,6 +41,16 @@ class AsyncRDDActionsTestCase(ReusedPySparkTestCase):
         f = rdd.foreachPartitionAsync(lambda xs: [acc2.add(1) for _ in xs])
         self.assertTrue(
             f.result() is None and acc2.value == len(data)
+        )
+
+        path = os.path.join(self.tempdir, "rdd_saved_async")
+        f = rdd.saveAsTextFileAsync(path)
+
+        self.assertIsNone(f.result())
+
+        self.assertEqual(
+            sorted(self.sc.textFile(path).collect()),
+            [str(x) for x in data]
         )
 
 

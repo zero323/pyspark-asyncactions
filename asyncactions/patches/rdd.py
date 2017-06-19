@@ -63,7 +63,18 @@ actions = {
         [0, 1, 2]
 
         .. versionadded:: 2.3.0
-        """)
+        """),
+    "saveAsTextFile": ("""
+        .. note:: Experimental
+        
+        Asynchronously save this RDD as a text file, using string representations of elements
+        and returns `concurrent.futures.Future` of this action.
+        
+        @param path: path to text file
+        @param compressionCodecClass: (None by default) string i.e.
+            "org.apache.hadoop.io.compress.GzipCodec"
+
+    """)
 }
 
 patch_all(RDD, actions)
