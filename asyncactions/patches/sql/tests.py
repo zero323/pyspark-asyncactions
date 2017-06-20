@@ -1,7 +1,7 @@
-import unittest
 import tempfile
 import shutil
 import os
+import unittest
 
 from pyspark.tests import ReusedPySparkTestCase
 from pyspark.sql import SparkSession
