@@ -35,7 +35,7 @@ for example:
 
 Number of threads is determined as follows:
 
--  ``spark.driver.cores`` is set.
+-  ``spark.driver.cores`` if is set.
 -  2 otherwise.
 
 Usage
