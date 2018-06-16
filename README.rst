@@ -60,6 +60,9 @@ All ``*Async`` methods return ``concurrent.futures._base.Future``:
     <Future at ... state=running>
     >>> type(f)
     concurrent.futures._base.Future
+    >>> f.add_done_callback(lambda f: print(f.result()))
+    100
+
 
 and can be used when ``Future`` is expected.
 
