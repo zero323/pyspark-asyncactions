@@ -11,4 +11,4 @@ install:
   - pip install pyspark
   - pip install coverage
 
-script: SPARK_HOME=$(python -c "import site; import os;  print(os.path.join(site.getsitepackages()[0], 'pyspark'))") pytest
+script: SPARK_HOME=$(python -c "import os; import pyspark; print(os.path.dirname(pyspark.__file__))") pytest
