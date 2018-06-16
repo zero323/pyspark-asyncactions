@@ -1,5 +1,7 @@
 # asyncactions
 
+[![Build Status](https://travis-ci.org/zero323/pyspark-asyncactions.svg?branch=master)](https://travis-ci.org/zero323/pyspark-asyncactions)
+
 A proof of concept asynchronous actions for PySpark using [`concurent.futures`](https://docs.python.org/3/library/concurrent.futures.html#module-concurrent.futures).
 
 
