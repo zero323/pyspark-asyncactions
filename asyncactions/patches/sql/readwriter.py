@@ -4,8 +4,6 @@ from asyncactions.utils import patch_all
 
 actions = {
     "save": """
-        .. note:: Experimental
-    
         Asynchronously saves the contents of the :class:`DataFrame` to a data source
         and returns a `concurrent.futures.Future` of this action.
 
