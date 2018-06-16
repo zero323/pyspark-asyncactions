@@ -14,7 +14,12 @@ setup(
     author='zero323',
     author_email='',
     description='A proof of concept asynchronous actions for PySpark using concurent.futures',
-    long_description=(open('README.md').read() if os.path.exists('README.md')
+    long_description=(open('README.rst').read() if os.path.exists('README.rst')
                         else ''), 
-    install_requires=install_requires
+    install_requires=install_requires,
+    classifiers=['Programming Language :: Python :: 2',
+                 'Programming Language :: Python :: 3',
+                 'Development Status :: 3 - Alpha',
+                 'License :: OSI Approved :: Apache Software License',
+                ]
 )
