@@ -8,6 +8,7 @@ python:
 
 install:
   - pip install .
+  - pip install pyspark
   - pip install coverage
 
 script: SPARK_HOME=$(python -c "import site; import os;  print(os.path.join(site.getsitepackages()[0], 'pyspark'))") pytest
