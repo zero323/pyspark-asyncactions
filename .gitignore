@@ -88,3 +88,8 @@ spark-warehouse/
 *.Rproj.*
 
 .Rproj.user
+
+
+build
+dist
+*egg-info
