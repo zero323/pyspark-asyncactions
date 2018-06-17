@@ -64,7 +64,7 @@ All ``*Async`` methods return ``concurrent.futures._base.Future``:
     100
 
 
-and can be used when ``Future`` is expected.
+and the result can be used whenever ``Future`` is expected.
 
 Installation
 ------------
