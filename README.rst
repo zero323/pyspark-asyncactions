@@ -89,7 +89,7 @@ It is also possible, but not supported, to use it with Python 2.7, using
 Disclaimer
 ----------
 
-Apache Spark, Spark, Apache, and the Spark logo are `trademarks <https://www.apache.org/foundation/marks/>`__ of `The
+Apache Spark, Spark, PySpark, Apache, and the Spark logo are `trademarks <https://www.apache.org/foundation/marks/>`__ of `The
 Apache Software Foundation <http://www.apache.org/>`__. This project is not owned, endorsed, or
 sponsored by The Apache Software Foundation.
 
