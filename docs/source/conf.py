@@ -161,10 +161,16 @@ texinfo_documents = [
 
 # -- Extension configuration -------------------------------------------------
 
+def process_ClassDocstring(app, what, name, obj, options, lines):
+
+    if what == "class":
+        for i in range(len(lines)):
+            lines[i] = ""
 
 def skip_NotAsync(app, what, name, obj, skip, options):
     return not name.endswith("Async") 
 
 def setup(app):
     app.connect('autodoc-skip-member', skip_NotAsync)
+    app.connect('autodoc-process-docstring', process_ClassDocstring)
 
