@@ -4,7 +4,7 @@ from asyncactions.utils import patch_all
 
 actions = {
     "save": """Asynchronously saves the contents of the :class:`DataFrame` to a data source
-        and returns a `concurrent.futures.Future` of this action.
+        and returns a :py:class:`concurrent.futures.Future` of this action.
 
         The data source is specified by the ``format`` and a set of ``options``.
         If ``format`` is not specified, the default data source configured by

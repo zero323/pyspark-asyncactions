@@ -3,7 +3,7 @@ from asyncactions.utils import patch_all
 
 
 actions = {
-    "collect": ("""Returns a `concurrent.futures.Future` for retrieving all elements of this DataFrame.
+    "collect": ("""Returns a :py:class:`concurrent.futures.Future` for retrieving all elements of this DataFrame.
 
         >>> df = spark.range(8)             # doctest: +SKIP
         >>> f = df.collectAsync()            # doctest: +SKIP
@@ -17,7 +17,7 @@ actions = {
         10
         """),
     "foreach": ("""Asynchronously applies a function f to all elements of this DataFrame
-        and returns a `concurrent.futures.Future` of this action.
+        and returns a :py:class:`concurrent.futures.Future` of this action.
 
         >>> def g(x): print(x)               # doctest: +SKIP
         >>> df = spark.range(10)             # doctest: +SKIP
@@ -26,7 +26,7 @@ actions = {
         True
         """),
     "foreachPartition": ("""Asynchronously applies a function f to each partition of this DataFrame
-        and returns a `concurrent.futures.Future` of this action.
+        and returns a :py:class:`concurrent.futures.Future` of this action.
 
         >>> def g(xs):                       # doctest: +SKIP
         ...     for x in xs:
@@ -35,7 +35,7 @@ actions = {
         >>> f = df.foreachPartitionAsync(g)  # doctest: +SKIP
         >>> f.result() is None               # doctest: +SKIP
         """),
-    "take": ("""Returns a `concurrent.futures.Future` for retrieving
+    "take": ("""Returns a :py:class:`concurrent.futures.Future` for retrieving
         the first num elements of the DataFrame.
 
         >>> rdd = spark.range(10)            # doctest: +SKIP
