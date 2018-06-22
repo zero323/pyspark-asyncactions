@@ -1,4 +1,3 @@
-import textwrap
 from functools import update_wrapper
 
 from pyspark.context import SparkContext
@@ -21,7 +20,7 @@ def async_action(f):
 def patch_async(cls, method, doc, suffix):
     g = getattr(cls, method)
     f = update_wrapper(async_action(g), g, assigned=["__module__", "__annotations__"] if hasattr(g, "__annotations__") else ["__module__"])
-    f.__doc__ = textwrap.dedent(doc)
+    f.__doc__ = doc
     setattr(cls, "{}{}".format(method, suffix), f)
 
 
