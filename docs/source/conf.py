@@ -26,9 +26,9 @@ copyright = '2018, zero323'
 author = 'zero323'
 
 # The short X.Y version
-version = ''
+version = '0.0.2'
 # The full version, including alpha/beta/rc tags
-release = ''
+release = '0.0.2'
 
 
 # -- General configuration ---------------------------------------------------
@@ -177,9 +177,8 @@ def process_ClassDocstring(app, what, name, obj, options, lines):
             lines[i] = ""
 
 def skip_NotAsync(app, what, name, obj, skip, options):
-    return not name.endswith("Async") 
+    return not name.endswith("Async")
 
 def setup(app):
     app.connect('autodoc-skip-member', skip_NotAsync)
     app.connect('autodoc-process-docstring', process_ClassDocstring)
-
