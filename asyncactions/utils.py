@@ -8,12 +8,7 @@ from pyspark.sql.readwriter import DataFrameWriter
 
 
 def get_context(x):
-    if isinstance(x, RDD):
-        return x.ctx
-    if isinstance(x, DataFrame):
-        return x._sc
-    if isinstance(x, DataFrameWriter):
-        return x._spark._sc
+    return SparkContext._active_spark_context
 
 
 def async_action(f):
