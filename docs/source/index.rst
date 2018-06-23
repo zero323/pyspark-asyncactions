@@ -8,22 +8,12 @@ Welcome to pyspark-asyncactions's documentation!
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: Packages:
 
-API
-===
+   asyncactions.rdd
+   asyncactions.sql.dataframe
+   asyncactions.sql.readwriter
 
-.. automodule:: pyspark.rdd
-.. autoclass:: RDD
-   :members:
-
-.. automodule:: pyspark.sql.dataframe
-.. autoclass:: DataFrame
-   :members:
-
-.. automodule:: pyspark.sql.readwriter
-.. autoclass:: DataFrameWriter
-   :members:
 
 Indices and tables
 ==================
