@@ -4,9 +4,9 @@ pyspark-asyncactions
 |Build Status| |PyPI version|
 
 A proof of concept asynchronous actions for PySpark using
-`concurent.futures <https://docs.python.org/3/library/concurrent.futures.html#module-concurrent.futures>`__
+`concurent.futures <https://docs.python.org/3/library/concurrent.futures.html#module-concurrent.futures>`__.
 Originally developed as proof-of-concept solution for
-`SPARK-20347 <https://issues.apache.org/jira/browse/SPARK-20347>`__
+`SPARK-20347 <https://issues.apache.org/jira/browse/SPARK-20347>`__.
 
 How does it work?
 -----------------
@@ -69,6 +69,15 @@ All ``*Async`` methods return `concurrent.futures.Future <https://docs.python.or
 
 
 and the result can be used whenever ``Future`` is expected.
+
+When not to use this package
+----------------------------
+
+This package is intended primarily to achieve small scale concurrent job execution
+when working with interactive environments. While theoretically it should be possible
+to use it to submit hundreds of independent jobs, it will is likely to stress driver process
+and Py4j gateway and crash the application. Therefore I strongly recommend against
+using it as substitute for a workflow management software.
 
 Installation
 ------------
