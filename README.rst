@@ -1,5 +1,5 @@
-asyncactions
-============
+pyspark-asyncactions
+====================
 
 |Build Status| |PyPI version|
 
@@ -119,7 +119,44 @@ The package supports Python 3.5 or later with a common codebase and
 requires no external dependencies.
 
 It is also possible, but not supported, to use it with Python 2.7, using
-`concurent.futures backport <https://pypi.org/project/futures/>`__.
+`concurrent.futures backport <https://pypi.org/project/futures/>`__.
+
+
+FAQ
+---
+
+- **Why would I need that? Processing in Spark is already distributed.**
+
+  As explained in the `Job Scheduling documentation`_
+
+    (...) within each Spark application, multiple “jobs” (Spark actions) may be running concurrently if they were submitted by different threads.
+
+  However all PySpark actions are blocking. This means that, even if there are free resources on the cluster, each jobs will be executed sequentially
+  (paraphrasing `XKCD <https://www.xkcd.com/303/>`__, I am not slacking off, just fitting a ``Pipeline``).
+
+  It is perfectly possible `to achieve the same result using threads <https://stackoverflow.com/q/38048068/1560062>`__ or ``concurrent.futures``
+  directly, but the resulting code but resulting can be quite verbose, especially when used in an interactive environment.
+  The goal of this package is to make this process as streamlined as possible by hiding all the details (creating and stopping thread pool, job submission).
+
+- **What about** `GIL`_?
+
+  The goal of the package is to enable non-blocking submission of jobs (see above) while the actual processing is handled by the Spark cluster.
+  Since heavy lifting is performed by JVM or Python workers as standalone processes, interpreter lock is of lesser concern.
+
+  Because final merging process is applied on the driver, GIL might affect jobs  depending heavily on computationally expensive ``Accumulators`` or reduce-like
+  (``reduce``, ``fold``, ``aggregate``) jobs with computationally expensive function.
+  The latter problem can be partially addressed using `treeReduce`_.
+
+
+- **Why not merge this into PySpark?**
+
+  **TL;DR** There was not enough consensus if the feature is essential enough,
+  and if it is, what implementation should be used (piggyback onto JVM `AsyncRDDActions`_ vs. native Python implementation).
+  For details see `corresponding PR <https://github.com/apache/spark/pull/18052>`_.
+
+  Keeping a separate package gives more freedom (we can add a number of methods not present in the Scala API)
+  and better integration with plain Python code, at expense of some more advanced features
+  (most notably support for canceling running Spark jobs).
 
 Disclaimer
 ----------
@@ -132,3 +169,7 @@ sponsored by The Apache Software Foundation.
    :target: https://travis-ci.org/zero323/pyspark-asyncactions
 .. |PyPI version| image:: https://badge.fury.io/py/pyspark-asyncactions.svg
    :target: https://badge.fury.io/py/pyspark-asyncactions
+.. _Job Scheduling documentation: https://spark.apache.org/docs/latest/job-scheduling.html#overview
+.. _GIL: https://wiki.python.org/moin/GlobalInterpreterLock
+.. _AsyncRDDActions: https://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.rdd.AsyncRDDActions
+.. _treeReduce: https://stackoverflow.com/q/32281417/1560062
