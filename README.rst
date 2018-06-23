@@ -70,15 +70,6 @@ All ``*Async`` methods return `concurrent.futures.Future <https://docs.python.or
 
 and the result can be used whenever ``Future`` is expected.
 
-When not to use this package
-----------------------------
-
-This package is intended primarily to achieve small scale concurrent job execution
-when working with interactive environments. While theoretically it should be possible
-to use it to submit hundreds of independent jobs, it will is likely to stress driver process
-and Py4j gateway and crash the application. Therefore I strongly recommend against
-using it as substitute for a workflow management software.
-
 Installation
 ------------
 
@@ -169,6 +160,15 @@ FAQ
   Keeping a separate package gives more freedom (we can add a number of methods not present in the Scala API)
   and better integration with plain Python code, at expense of some more advanced features
   (most notably support for canceling running Spark jobs).
+
+- **When not to use this package?**
+
+  This package is intended primarily to achieve small scale concurrent job execution
+  when working with interactive environments. While theoretically it should be possible
+  to use it to submit hundreds of independent jobs, it will is likely to stress driver process
+  and Py4j gateway and crash the application.
+
+  Therefore I strongly recommend against using it as substitute for a workflow management software.
 
 Disclaimer
 ----------
