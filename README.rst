@@ -11,8 +11,9 @@ Originally developed as proof-of-concept solution for
 How does it work?
 -----------------
 
-The package patches ``RDD``, ``DataFrame`` and ``DataFrameWriter``
+The package patches `RDD <https://spark.apache.org/docs/latest/api/python/pyspark.html#pyspark.RDD>`__, `DataFrame <https://spark.apache.org/docs/latest/api/python/pyspark.sql.html#pyspark.sql.DataFrame>`__ and `DataFrameWriter <https://spark.apache.org/docs/latest/api/python/pyspark.sql.html#pyspark.sql.DataFrameWriter>`__
 classes by adding thin wrappers to the commonly used action methods.
+
 
 Methods are patched by retrieving shared
 `ThreadPoolExecutor <https://docs.python.org/3/library/concurrent.futures.html#concurrent.futures.ThreadPoolExecutor>`__
@@ -50,7 +51,7 @@ To patch existing classes just import the package:
     >>>
     >>> spark = SparkSession.builder.getOrCreate()
 
-All ``*Async`` methods return ``concurrent.futures._base.Future``:
+All ``*Async`` methods return `concurrent.futures.Future <https://docs.python.org/3/library/concurrent.futures.html#future-objects>`__:
 
 .. code:: python
 
