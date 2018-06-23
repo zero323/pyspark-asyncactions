@@ -78,6 +78,17 @@ The package is available on PYPI:
 
 Installation is required only on the driver node.
 
+
+Dependencies
+------------
+
+The package supports Python 3.5 or later with a common codebase and
+requires no external dependencies.
+
+It is also possible, but not supported, to use it with Python 2.7, using
+`concurrent.futures backport <https://pypi.org/project/futures/>`__.
+
+
 Do it yourself
 --------------
 
@@ -110,17 +121,6 @@ Enjoy your new asynchronous method
     >>> metrics = RegressionEvaluator().evaluateAsync(df)
     >>> metrics.result()  # Note that result is blocking
     1.2909944487358058
-
-
-Dependencies
-------------
-
-The package supports Python 3.5 or later with a common codebase and
-requires no external dependencies.
-
-It is also possible, but not supported, to use it with Python 2.7, using
-`concurrent.futures backport <https://pypi.org/project/futures/>`__.
-
 
 FAQ
 ---
