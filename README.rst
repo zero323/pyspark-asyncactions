@@ -47,7 +47,7 @@ To patch existing classes just import the package:
 
     >>> import asyncactions
     >>> from pyspark.sql import SparkSession
-    >>> 
+    >>>
     >>> spark = SparkSession.builder.getOrCreate()
 
 All ``*Async`` methods return ``concurrent.futures._base.Future``:
@@ -76,6 +76,40 @@ The package is available on PYPI:
     pip install pyspark-asyncactions
 
 Installation is required only on the driver node.
+
+Do it yourself
+--------------
+
+Define actions dictionary which maps from the method name to the docstring:
+
+.. code:: python
+
+    >>> actions = {"evaluate": """Asynchronously evaluates the output with optional parameters.
+    ...         :param dataset: a dataset that contains labels/observations and
+    ...                         predictions
+    ...         :param params: an optional param map that overrides embedded
+    ...                        params
+    ...         :return: :py:class:`concurrent.futures.Future` of metric
+    ...         """}
+
+Call asyncactions.utils.patch_all method with class and actions as the arguments
+
+.. code:: Python
+
+    >>> import asyncactions.utils
+    >>> from pyspark.ml.evaluation import Evaluator, RegressionEvaluator
+    >>> asyncactions.utils.patch_all(Evaluator, actions)
+
+Enjoy your new asynchronous method
+
+.. code:: python
+
+    >>> import asyncactions
+    >>> df = spark.createDataFrame([(1.0, 1.0), (1.0, -1.0), (0.0, 1.0)], ("label", "prediction"))
+    >>> metrics = RegressionEvaluator().evaluateAsync(df)
+    >>> metrics.result()  # Note that result is blocking
+    1.2909944487358058
+
 
 Dependencies
 ------------

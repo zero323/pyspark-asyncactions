@@ -3,8 +3,11 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to pyspark-asyncactions's documentation!
-================================================
+.. include:: ../../README.rst
+
+
+API
+===
 
 .. toctree::
    :maxdepth: 2
