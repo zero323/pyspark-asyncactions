@@ -11,7 +11,10 @@ Originally developed as proof-of-concept solution for
 How does it work?
 -----------------
 
-The package patches `RDD <https://spark.apache.org/docs/latest/api/python/pyspark.html#pyspark.RDD>`__, `DataFrame <https://spark.apache.org/docs/latest/api/python/pyspark.sql.html#pyspark.sql.DataFrame>`__ and `DataFrameWriter <https://spark.apache.org/docs/latest/api/python/pyspark.sql.html#pyspark.sql.DataFrameWriter>`__
+The package patches `RDD <https://spark.apache.org/docs/latest/api/python/pyspark.html#pyspark.RDD>`__,
+`Estimator <https://spark.apache.org/docs/latest/api/python/pyspark.ml.html#pyspark.ml.Estimator>`__,
+`DataFrame <https://spark.apache.org/docs/latest/api/python/pyspark.sql.html#pyspark.sql.DataFrame>`__ and
+`DataFrameWriter <https://spark.apache.org/docs/latest/api/python/pyspark.sql.html#pyspark.sql.DataFrameWriter>`__
 classes by adding thin wrappers to the commonly used action methods.
 
 

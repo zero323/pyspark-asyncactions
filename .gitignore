@@ -94,4 +94,4 @@ build
 dist
 *egg-info
 
-_*
+docs/source/_*

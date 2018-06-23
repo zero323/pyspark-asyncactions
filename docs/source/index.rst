@@ -14,9 +14,10 @@ API
    :caption: Packages:
 
    asyncactions.rdd
+   asyncactions.ml.base
    asyncactions.sql.dataframe
    asyncactions.sql.readwriter
-
+   
 
 Indices and tables
 ==================
