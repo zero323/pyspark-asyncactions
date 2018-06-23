@@ -1,4 +1,4 @@
-asyncactions.sql.dataframe
+pyspark.sql.dataframe
 ==========================
 
 .. automodule:: pyspark.sql.dataframe

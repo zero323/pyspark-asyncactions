@@ -1,4 +1,4 @@
-asyncactions.rdd
+pyspark.rdd
 ===================
 
 .. automodule:: pyspark.rdd

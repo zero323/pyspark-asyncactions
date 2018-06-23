@@ -13,10 +13,10 @@ API
    :maxdepth: 2
    :caption: Packages:
 
-   asyncactions.rdd
-   asyncactions.ml.base
-   asyncactions.sql.dataframe
-   asyncactions.sql.readwriter
+   pyspark.rdd
+   pyspark.ml.base
+   pyspark.sql.dataframe
+   pyspark.sql.readwriter
    
 
 Indices and tables

@@ -1,4 +1,4 @@
-asyncactions.sql.readwriter
+pyspark.sql.readwriter
 ===========================
 
 .. automodule:: pyspark.sql.readwriter

@@ -1,4 +1,4 @@
-asyncactions.ml.base
+pyspark.ml.base
 ====================
 
 .. automodule:: pyspark.ml.base
