@@ -93,3 +93,5 @@ spark-warehouse/
 build
 dist
 *egg-info
+
+_*
