@@ -1,15 +1,12 @@
 sudo: false
-language: python
 cache: pip
-python:
-  - "2.7"
-  - "3.5"
-  - "3.6"
-  - "pypy3.5"
+jdk: openjdk8
+python: 3.7
 
 install:
   - pip install .
   - pip install pyspark
   - pip install coverage
 
-script: SPARK_HOME=$(python -c "import os; import pyspark; print(os.path.dirname(pyspark.__file__))") pytest
+script:
+  - SPARK_HOME=$(python -c "import os; import pyspark; print(os.path.dirname(pyspark.__file__))") pytest
