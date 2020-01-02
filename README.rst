@@ -170,6 +170,12 @@ FAQ
 
   Therefore I strongly recommend against using it as substitute for a workflow management software.
 
+- **Is this package actively maintained?**
+
+  In general, it has been designed to be as lean as possible, and piggyback on top of standard library, and allow users to add necessary wrappers when needed. Hence, it is pretty much maintenance free and seen almost no activity since its initial release.
+
+  Nonetheless, I consider it actively maintained, and please open an issue if you experience any problems or have feature (like new built-in wrappers) request.
+
 Disclaimer
 ----------
 
