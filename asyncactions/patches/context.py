@@ -18,10 +18,9 @@ def _get_executor(self: SparkContext) -> concurrent.futures.thread.ThreadPoolExe
         with SparkContext._lock:  # type: ignore [attr-defined]
             cores = int(self.getConf().get("spark.driver.cores") or 2)
             # In case of another thread got lock first
-            SparkContext._thread_pool_executor = (  # type: ignore [attr-defined]
-                getattr(SparkContext, "_thread_pool_executor", None) or
-                concurrent.futures.ThreadPoolExecutor(max_workers=cores)
-            )
+            SparkContext._thread_pool_executor = getattr(  # type: ignore [attr-defined]
+                SparkContext, "_thread_pool_executor", None
+            ) or concurrent.futures.ThreadPoolExecutor(max_workers=cores)
 
     return SparkContext._thread_pool_executor  # type: ignore [attr-defined]
 
@@ -34,6 +33,6 @@ def stop(self: SparkContext) -> None:
     SparkContext._stop(self)  # type: ignore [attr-defined]
 
 
-SparkContext._stop = SparkContext.stop   # type: ignore [assignment,attr-defined]
+SparkContext._stop = SparkContext.stop  # type: ignore [assignment,attr-defined]
 SparkContext.stop = stop  # type: ignore [assignment]
 SparkContext._get_executor = _get_executor  # type: ignore [assignment,attr-defined]
