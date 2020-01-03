@@ -1,6 +1,6 @@
 import unittest
 
-from pyspark.tests import ReusedPySparkTestCase
+from pyspark.tests import ReusedPySparkTestCase  # type: ignore
 from pyspark.sql import SparkSession
 from pyspark.ml.feature import StringIndexer, StringIndexerModel
 
