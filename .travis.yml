@@ -1,14 +1,17 @@
-sudo: false
-dist: xenial
+dist: bionic
 language: python
 cache: pip
 python:
   - "3.7"
-  - "pypy3"
+
+before_install:
+  - sudo apt install openjdk-8-jdk-headless
+  - sudo update-java-alternatives -s java-1.8.0-openjdk-amd64
 
 install:
   - pip install .
   - pip install pyspark
   - pip install coverage
 
-script: SPARK_HOME=$(python -c "import os; import pyspark; print(os.path.dirname(pyspark.__file__))") pytest
+script:
+  - JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64 SPARK_HOME=$(python -c "import os; import pyspark; print(os.path.dirname(pyspark.__file__))") pytest
