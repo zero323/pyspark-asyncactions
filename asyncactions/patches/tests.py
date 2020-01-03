@@ -3,7 +3,7 @@ import shutil
 import tempfile
 import unittest
 
-from pyspark.tests import ReusedPySparkTestCase
+from pyspark.tests import ReusedPySparkTestCase  # type: ignore
 import asyncactions
 
 

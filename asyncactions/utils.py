@@ -6,8 +6,8 @@ from pyspark.sql.dataframe import DataFrame
 from pyspark.sql.readwriter import DataFrameWriter
 
 
-def get_context(x):
-    return SparkContext._active_spark_context
+def get_context(self) -> SparkContext:
+    return SparkContext._active_spark_context  # type: ignore [attr-defined]
 
 
 def async_action(f):
@@ -24,6 +24,6 @@ def patch_async(cls, method, doc, suffix):
     setattr(cls, "{}{}".format(method, suffix), f)
 
 
-def patch_all(cls, mapping, suffix="Async"):
+def patch_all(cls, mapping, suffix: str="Async"):
     for method, doc in mapping.items():
         patch_async(cls, method, doc, suffix)

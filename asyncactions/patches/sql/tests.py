@@ -3,7 +3,7 @@ import shutil
 import os
 import unittest
 
-from pyspark.tests import ReusedPySparkTestCase
+from pyspark.tests import ReusedPySparkTestCase  # type: ignore
 from pyspark.sql import SparkSession
 from pyspark.sql.types import Row
 
