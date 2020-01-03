@@ -85,11 +85,7 @@ Installation is required only on the driver node.
 Dependencies
 ------------
 
-The package supports Python 3.5 or later with a common codebase and
-requires no external dependencies.
-
-It is also possible, but not supported, to use it with Python 2.7, using
-`concurrent.futures backport <https://pypi.org/project/futures/>`__.
+The package supports Python 3.6 or later and requires no external dependencies.
 
 
 Do it yourself
