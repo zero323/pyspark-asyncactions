@@ -185,7 +185,7 @@ sponsored by The Apache Software Foundation.
 
 .. |Build Status| image:: https://travis-ci.org/zero323/pyspark-asyncactions.svg?branch=master
    :target: https://travis-ci.org/zero323/pyspark-asyncactions
-.. |PyPI version| image:: https://badge.fury.io/py/pyspark-asyncactions.svg
+.. |PyPI version| image:: https://img.shields.io/pypi/v/pyspark-asyncactions?color=blue 
    :target: https://badge.fury.io/py/pyspark-asyncactions
 .. _Job Scheduling documentation: https://spark.apache.org/docs/latest/job-scheduling.html#overview
 .. _GIL: https://wiki.python.org/moin/GlobalInterpreterLock
