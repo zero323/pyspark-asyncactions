@@ -1,8 +1,10 @@
 import concurrent.futures
+from concurrent.futures.thread import ThreadPoolExecutor
+
 from pyspark.context import SparkContext
 
 
-def _get_executor(self: SparkContext) -> concurrent.futures.thread.ThreadPoolExecutor:
+def _get_executor(self: SparkContext) -> ThreadPoolExecutor:
     """ Return existing thread pool executor
     or create a new one.
     """
