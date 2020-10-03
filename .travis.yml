@@ -4,17 +4,18 @@ cache: pip
 python:
   - "3.6"
   - "3.7"
+  - "3.8"
 
 before_install:
-  - sudo apt install openjdk-8-jdk-headless
-  - sudo update-java-alternatives -s java-1.8.0-openjdk-amd64
+  - sudo apt install openjdk-11-jdk-headless
+  - sudo update-java-alternatives -s java-1.11.0-openjdk-amd64
 
 install:
   - pip install .
   - pip install -r requirements-test.txt
 
 script:
-  - JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64 SPARK_HOME=$(python -c "import os; import pyspark; print(os.path.dirname(pyspark.__file__))") pytest
+  - JAVA_HOME=/usr/lib/jvm/java-1.11.0-openjdk-amd64 SPARK_HOME=$(python -c "import os; import pyspark; print(os.path.dirname(pyspark.__file__))") pytest
 
 deploy:
   provider: pypi
@@ -22,6 +23,6 @@ deploy:
   skip_existing: true
   on:
     tags: true
-    branch: master  
+    branch: master
   password:
     secure: KkC2I6vFsx/p2jt3Vi22daVQNkSccM/EOzEfsBSNVMmE+W2/a2epWv134KQ0GIsHKLIwmkk/hw9ckZyh7K2a46UG3oVCwBoC33qXubcM9Yoto1UjpweK1+ateX93MQ3jRC+TW2iOalBJ29QbflSo6R5sD7RtvbTGR2rZQJr0FtbfZ6fmqpu0mXugQN8jBOw75vVjd4uYNT4wOzTvEE4KjgvZPSjYX4636iO+NuxTb9v7pOV0KF+neg/ViiE50OT9Nyo/TnkONV/XwO5WPEeyDKNwsqPzNQIpTRRJ8xALM/V1P3aa6Ve35F6ix/v13iQ1zjJNzLoDg91q7595zUtg+CNA83V/K3OzpXSRe3Tkv79fJGgTMwgt7wvzdkL8ccamlCje+rbJgBliaOozi1vlZtDpRRCVdxXkMWOJeIDJUZdAhfnkRid/oLkutSoIRMSnNZshyx14ypwyEsJ3cnMF+2TlM+bhm0r1Qo5mCQFCr2Wly5iLBnnHnJuttjfk4cjTkRUH91tecMFEOojpdd3PUwVcryBXitjtznxr9YiEjVvkiYxF15l29OZhtFfYO4s4vL/u+nk8Tlzc3zuuIPJqbvlnNl4LzUFl7SHiHh08DZ35wgscMetS+XMHse7U9q4MWpSzuJwgpRuvCbvsWMiwLtsfUrr9iRfdpLmKQIvZpzE=
