@@ -11,8 +11,7 @@ before_install:
 
 install:
   - pip install .
-  - pip install pyspark
-  - pip install coverage pytest
+  - pip install -r requirements-test.txt
 
 script:
   - JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64 SPARK_HOME=$(python -c "import os; import pyspark; print(os.path.dirname(pyspark.__file__))") pytest

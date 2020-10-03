@@ -1,21 +1,21 @@
 import unittest
 
-from pyspark.tests import ReusedPySparkTestCase  # type: ignore
+from sparktestingbase.testcase import SparkTestingBaseReuse  # type: ignore
 from pyspark.sql import SparkSession
 from pyspark.ml.feature import StringIndexer, StringIndexerModel
 
 import asyncactions
 
 
-class AsyncEstimatorActionsTestCase(ReusedPySparkTestCase):
+class AsyncEstimatorActionsTestCase(SparkTestingBaseReuse):
     @classmethod
     def setUpClass(cls):
-        ReusedPySparkTestCase.setUpClass()
+        SparkTestingBaseReuse.setUpClass()
         cls.spark = SparkSession(cls.sc)
 
     @classmethod
     def tearDownClass(cls):
-        ReusedPySparkTestCase.tearDownClass()
+        SparkTestingBaseReuse.tearDownClass()
         cls.spark.stop()
 
     def test_fit_async(self):
