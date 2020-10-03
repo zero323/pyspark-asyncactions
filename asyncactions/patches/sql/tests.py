@@ -3,22 +3,22 @@ import shutil
 import os
 import unittest
 
-from pyspark.tests import ReusedPySparkTestCase  # type: ignore
+from sparktestingbase.testcase import SparkTestingBaseReuse  # type: ignore
 from pyspark.sql import SparkSession
 from pyspark.sql.types import Row
 
 import asyncactions
 
 
-class AsyncDataFrameActionsTestCase(ReusedPySparkTestCase):
+class AsyncDataFrameActionsTestCase(SparkTestingBaseReuse):
     @classmethod
     def setUpClass(cls):
-        ReusedPySparkTestCase.setUpClass()
+        SparkTestingBaseReuse.setUpClass()
         cls.spark = SparkSession(cls.sc)
 
     @classmethod
     def tearDownClass(cls):
-        ReusedPySparkTestCase.tearDownClass()
+        SparkTestingBaseReuse.tearDownClass()
         cls.spark.stop()
 
     def test_async_actions(self):
@@ -43,16 +43,16 @@ class AsyncDataFrameActionsTestCase(ReusedPySparkTestCase):
         self.assertTrue(f.result() is None and acc2.value == len(data))
 
 
-class AsyncDataFrameWriterActionsTestCase(ReusedPySparkTestCase):
+class AsyncDataFrameWriterActionsTestCase(SparkTestingBaseReuse):
     @classmethod
     def setUpClass(cls):
-        ReusedPySparkTestCase.setUpClass()
+        SparkTestingBaseReuse.setUpClass()
         cls.spark = SparkSession(cls.sc)
         cls.tempdir = tempfile.mkdtemp()
 
     @classmethod
     def tearDownClass(cls):
-        ReusedPySparkTestCase.tearDownClass()
+        SparkTestingBaseReuse.tearDownClass()
         cls.spark.stop()
         shutil.rmtree(cls.tempdir)
 

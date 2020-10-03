@@ -3,19 +3,19 @@ import shutil
 import tempfile
 import unittest
 
-from pyspark.tests import ReusedPySparkTestCase  # type: ignore
+from sparktestingbase.testcase import SparkTestingBaseReuse  # type: ignore
 import asyncactions
 
 
-class AsyncRDDActionsTestCase(ReusedPySparkTestCase):
+class AsyncRDDActionsTestCase(SparkTestingBaseReuse):
     @classmethod
     def setUpClass(cls):
-        ReusedPySparkTestCase.setUpClass()
+        SparkTestingBaseReuse.setUpClass()
         cls.tempdir = tempfile.mkdtemp()
 
     @classmethod
     def tearDownClass(cls):
-        ReusedPySparkTestCase.tearDownClass()
+        SparkTestingBaseReuse.tearDownClass()
         shutil.rmtree(cls.tempdir)
 
     def test_async_actions(self):
