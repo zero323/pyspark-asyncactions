@@ -1,7 +1,7 @@
 pyspark-asyncactions
 ====================
 
-|Build Status| |PyPI version|
+|Build Status| |PyPI version| |Conda Forge version|
 
 A proof of concept asynchronous actions for PySpark using
 `concurent.futures <https://docs.python.org/3/library/concurrent.futures.html#module-concurrent.futures>`__.
@@ -73,11 +73,17 @@ and the result can be used whenever ``Future`` is expected.
 Installation
 ------------
 
-The package is available on PYPI:
+The package is available on `PyPI <https://pypi.org/project/pyspark-asyncactions>`_:
 
 .. code:: bash
 
     pip install pyspark-asyncactions
+    
+and `conda-forge <https://anaconda.org/conda-forge/pyspark-asyncactions>`_:
+
+.. code:: bash
+
+    conda install -c conda-forge pyspark-asyncactions
 
 Installation is required only on the driver node.
 
@@ -183,6 +189,8 @@ sponsored by The Apache Software Foundation.
    :target: https://travis-ci.org/zero323/pyspark-asyncactions
 .. |PyPI version| image:: https://img.shields.io/pypi/v/pyspark-asyncactions?color=blue 
    :target: https://badge.fury.io/py/pyspark-asyncactions
+.. |Conda Forge version| image:: https://img.shields.io/conda/vn/conda-forge/pyspark-asyncactions.svg
+   :target: https://anaconda.org/conda-forge/pyspark-asyncactions
 .. _Job Scheduling documentation: https://spark.apache.org/docs/latest/job-scheduling.html#overview
 .. _GIL: https://wiki.python.org/moin/GlobalInterpreterLock
 .. _AsyncRDDActions: https://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.rdd.AsyncRDDActions
