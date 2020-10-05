@@ -3,7 +3,15 @@ import os
 from setuptools import setup, find_packages
 
 
-setup(
+
+if os.path.exists("README.rst"):
+    with open("README.rst", encoding="UTF-8") as fr:
+        long_description = fr.read()
+else:
+    long_description = ""
+
+
+setup( 
     name="pyspark-asyncactions",
     version="0.0.4",
     packages=find_packages("."),
@@ -12,9 +20,7 @@ setup(
     author="zero323",
     author_email="",
     description="A proof of concept asynchronous actions for PySpark using concurent.futures",
-    long_description=(
-        open("README.rst").read() if os.path.exists("README.rst") else ""
-    ),
+    long_description=long_description,
     install_requires=[],
     classifiers=[
         "Programming Language :: Python :: 3.6",
