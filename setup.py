@@ -13,7 +13,7 @@ else:
 
 setup( 
     name="pyspark-asyncactions",
-    version="0.0.4",
+    version="0.0.5",
     packages=find_packages("."),
     url="https://github.com/zero323/pyspark-asyncactions",
     license="Apache 2.0",
