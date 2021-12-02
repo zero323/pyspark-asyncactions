@@ -185,9 +185,9 @@ Apache Spark, Spark, PySpark, Apache, and the Spark logo are `trademarks <https:
 Apache Software Foundation <http://www.apache.org/>`__. This project is not owned, endorsed, or
 sponsored by The Apache Software Foundation.
 
-.. |Build Status| image:: https://travis-ci.org/zero323/pyspark-asyncactions.svg?branch=master
-   :target: https://travis-ci.org/zero323/pyspark-asyncactions
-.. |PyPI version| image:: https://img.shields.io/pypi/v/pyspark-asyncactions?color=blue 
+.. |Build Status| image:: https://github.com/zero323/pyspark-asyncactions/actions/workflows/test.yml/badge.svg
+   :target: https://github.com/zero323/pyspark-asyncactions/actions/workflows/test.yml
+.. |PyPI version| image:: https://img.shields.io/pypi/v/pyspark-asyncactions?color=blue
    :target: https://badge.fury.io/py/pyspark-asyncactions
 .. |Conda Forge version| image:: https://img.shields.io/conda/vn/conda-forge/pyspark-asyncactions.svg
    :target: https://anaconda.org/conda-forge/pyspark-asyncactions
@@ -195,3 +195,4 @@ sponsored by The Apache Software Foundation.
 .. _GIL: https://wiki.python.org/moin/GlobalInterpreterLock
 .. _AsyncRDDActions: https://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.rdd.AsyncRDDActions
 .. _treeReduce: https://stackoverflow.com/q/32281417/1560062
+
