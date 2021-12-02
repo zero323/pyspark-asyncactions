@@ -1,4 +1,6 @@
 pyspark
 spark-testing-base
-coverage
 pytest
+numpy
+mypy
+black
