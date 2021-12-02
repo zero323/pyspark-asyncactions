@@ -5,7 +5,7 @@ from pyspark.context import SparkContext
 
 
 def _get_executor(self: SparkContext) -> ThreadPoolExecutor:
-    """ Return existing thread pool executor
+    """Return existing thread pool executor
     or create a new one.
     """
     # This would fail anyway, but
